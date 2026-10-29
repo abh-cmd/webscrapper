@@ -19,11 +19,9 @@ const { registerRoutes } = require('./routes');
 const { validateStartupConfig } = require('../config/startup-validator');
 
 const PUBLIC_DIR = path.join(__dirname, '..', '..', 'public');
-// The React/Vite/TypeScript dashboard's built output — a separate static
-// root served under /dashboard, entirely additive. The original public/
-// SPA (index.html/app.js/styles.css) keeps being served at / exactly as
-// before, unchanged, so tests/api-server.integration.test.js's existing
-// assertions about / , /app.js, and /styles.css keep passing untouched.
+// The React/Vite/TypeScript dashboard's built output. It is served at both
+// / and /dashboard/ so hosts that only probe the root URL display the app.
+// The original public SPA remains available under /legacy/.
 const DASHBOARD_DIR = path.join(__dirname, '..', '..', 'frontend', 'dist');
 
 const MIME_TYPES = {
@@ -71,6 +69,34 @@ function serveDashboard(request, response) {
     response.end('Forbidden');
     return;
   }
+
+  function serveDashboardRoot(request, response) {
+    const requestedPath = request.url.split('?')[0] || '/';
+    const filePath = path.join(DASHBOARD_DIR, requestedPath === '/' ? '/index.html' : requestedPath);
+    if (!filePath.startsWith(DASHBOARD_DIR)) {
+      response.writeHead(403);
+      response.end('Forbidden');
+      return;
+    }
+    fs.readFile(filePath, (error, content) => {
+      if (error) {
+        const shellPath = path.join(DASHBOARD_DIR, 'index.html');
+        fs.readFile(shellPath, (shellError, shellContent) => {
+          if (shellError) {
+            response.writeHead(404, { 'Content-Type': 'text/plain' });
+            response.end('Frontend build is missing.');
+            return;
+          }
+          response.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+          response.end(shellContent);
+        });
+        return;
+      }
+      const ext = path.extname(filePath);
+      response.writeHead(200, { 'Content-Type': MIME_TYPES[ext] || 'application/octet-stream' });
+      response.end(content);
+    });
+  }
   fs.readFile(filePath, (error, content) => {
     if (error) {
       // Not a built asset (e.g. a client-route path with no matching file)
@@ -108,6 +134,15 @@ function createServer() {
     }
     if (request.url === '/dashboard' || request.url.startsWith('/dashboard/') || request.url.startsWith('/dashboard?')) {
       serveDashboard(request, response);
+      return;
+    }
+    if (request.url === '/' || request.url.startsWith('/assets/') || request.url.startsWith('/products') || request.url.startsWith('/jobs') || request.url.startsWith('/database')) {
+      serveDashboardRoot(request, response);
+      return;
+    }
+    if (request.url === '/legacy' || request.url.startsWith('/legacy/')) {
+      request.url = request.url.replace(/^\/legacy/, '') || '/';
+      serveStatic(request, response);
       return;
     }
     serveStatic(request, response);
