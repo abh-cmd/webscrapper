@@ -1640,6 +1640,22 @@ ready, then starts the API. Do not expose PostgreSQL's port publicly. For a mana
 value in the `app` service with the provider's connection string and run only
 the `app` service with the same image.
 
+### Hosting without Docker
+
+Use Node 18 or newer, set the host-provided `PORT`, and use:
+
+```sh
+npm install
+npm run build
+npm start
+```
+
+The server listens on `PORT` and serves the dashboard at `/dashboard/`.
+It also starts without `DATABASE_URL` so the dashboard can be viewed before
+PostgreSQL is configured; database-backed screens return a clear 503 response
+until `DATABASE_URL` is set. For a static-only host, publish `frontend/dist/`
+and use its generated `index.html` as the site entry point.
+
 To stop the stack without deleting data:
 
 ```sh

@@ -118,10 +118,16 @@ function main() {
   const validation = validateStartupConfig();
   for (const warning of validation.warnings) console.warn(`[config warning] ${warning}`);
   if (!validation.valid) {
-    console.error('Configuration errors:');
-    for (const error of validation.errors) console.error(`  - ${error}`);
-    process.exitCode = 1;
-    return;
+    const databaseErrors = validation.errors.filter((error) => error.startsWith('DATABASE_URL'));
+    const blockingErrors = validation.errors.filter((error) => !error.startsWith('DATABASE_URL'));
+    if (blockingErrors.length > 0) {
+      console.error('Configuration errors:');
+      for (const error of blockingErrors) console.error(`  - ${error}`);
+      process.exitCode = 1;
+      return;
+    }
+    for (const error of databaseErrors) console.warn(`[config warning] ${error}`);
+    console.warn('[config warning] Starting without a database; the dashboard is available but database-backed operations are disabled.');
   }
 
   const server = createServer();

@@ -5,7 +5,9 @@ import react from '@vitejs/plugin-react';
 // output (see DASHBOARD_DIR in server.js) — the original public/ SPA
 // keeps living at '/', untouched, so existing tests keep passing.
 export default defineConfig({
-  base: '/dashboard/',
+  // Relative assets work when the build is hosted at the site root (static
+  // hosts) and under /dashboard/ (the Node server).
+  base: './',
   plugins: [react()],
   server: {
     proxy: {
