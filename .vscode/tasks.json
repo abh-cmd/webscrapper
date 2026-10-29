@@ -215,6 +215,46 @@
 			"isBackground": false,
 			"problemMatcher": [],
 			"group": "build"
+		},
+		{
+			"label": "Commit Deployment",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"commit",
+				"-m",
+				"Prepare WineOutlet for production deployment"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Remove Local Artifacts",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"rm",
+				"-r",
+				"--cached",
+				"--ignore-unmatch",
+				".claude"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Commit Cleanup",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"--all"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
 		}
 	]
 }
