@@ -1,0 +1,10 @@
+{
+  "item_number": "WO-10001",
+  "item_name": "Example Cabernet Sauvignon",
+  "size": "750ml",
+  "vintage": "2021",
+  "source": {
+    "name": "example-source",
+    "url": "http://127.0.0.1:3000/input/fixtures/example-source-product.html"
+  }
+}

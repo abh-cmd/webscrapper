@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture. Every real request to wine.com during Phase 4
+  inspection (a search page and this exact product URL, pulled from
+  wine.com's own public sitemap.xml) was blocked by DataDome before any
+  real page content was served — see wine-com-blocked.html, the actual
+  captured response. This fixture is therefore NOT real captured wine.com
+  markup; it models the generic schema.org Product conventions the adapter
+  is written against (JSON-LD Product + additionalProperty), using the real
+  product identity (Gruet Sauvage Rose, https://www.wine.com/product/gruet-sauvage-rose/205944)
+  discovered from the sitemap, so it exercises the adapter meaningfully.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Gruet Sauvage Rose | Wine.com (fixture)</title>
+  <meta property="og:title" content="Gruet Sauvage Rose">
+  <meta property="og:description" content="A dry sparkling rose from New Mexico.">
+  <meta property="og:image" content="https://example.com/fixtures/wine-com/gruet-sauvage-rose.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Gruet Sauvage Rose",
+    "description": "A bone-dry sparkling rose made in the traditional method, with notes of strawberry and citrus.",
+    "brand": { "@type": "Brand", "name": "Gruet Winery" },
+    "manufacturer": { "@type": "Organization", "name": "Gruet Winery" },
+    "category": "Sparkling Wine",
+    "sku": "205944",
+    "gtin13": "0850001234567",
+    "image": ["https://example.com/fixtures/wine-com/gruet-sauvage-rose.jpg"],
+    "offers": {
+      "@type": "Offer",
+      "price": "24.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "Bottle Size", "value": "750ML" },
+      { "@type": "PropertyValue", "name": "Vintage", "value": "NV" },
+      { "@type": "PropertyValue", "name": "Varietal", "value": "Pinot Noir Blend" },
+      { "@type": "PropertyValue", "name": "Region", "value": "New Mexico" },
+      { "@type": "PropertyValue", "name": "ABV", "value": "12.5%" },
+      { "@type": "PropertyValue", "name": "Appearance", "value": "Pale salmon pink." },
+      { "@type": "PropertyValue", "name": "Aroma", "value": "Strawberry, citrus, and brioche." },
+      { "@type": "PropertyValue", "name": "Taste", "value": "Bone dry with crisp acidity and a fine mousse." },
+      { "@type": "PropertyValue", "name": "Food Pairing", "value": "Oysters, sushi, and light appetizers." },
+      { "@type": "PropertyValue", "name": "Winemaker Notes", "value": "Made using the traditional method with extended lees aging." },
+      { "@type": "PropertyValue", "name": "Highlights", "value": "Extended lees aging; traditional method sparkling." }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Gruet Sauvage Rose</h1>
+</body>
+</html>

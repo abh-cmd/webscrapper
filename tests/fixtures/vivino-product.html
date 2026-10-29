@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture. Unlike the Wine.com and Total Wine fixtures, this is
+  not modeled on any real captured Vivino response at all: vivino.com's own
+  robots.txt explicitly disallows ClaudeBot from every path
+  ("User-agent: ClaudeBot" / "Disallow: /"), so no request of any kind was
+  made to vivino.com during development beyond robots.txt itself. This
+  fixture models only the generic schema.org Product conventions the
+  adapter is written against (JSON-LD Product + additionalProperty), using
+  a representative wine identity, so it exercises the adapter meaningfully
+  in the absence of any real signal.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Catena Malbec 2021 | Vivino (fixture)</title>
+  <meta property="og:title" content="Catena Malbec 2021">
+  <meta property="og:description" content="A classic Argentine Malbec from Mendoza.">
+  <meta property="og:image" content="https://example.com/fixtures/vivino/catena-malbec-2021.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Catena Malbec 2021",
+    "description": "A deep, structured Malbec from high-altitude vineyards in Mendoza, Argentina.",
+    "brand": { "@type": "Brand", "name": "Catena" },
+    "manufacturer": { "@type": "Organization", "name": "Bodega Catena Zapata" },
+    "category": "Red Wine",
+    "sku": "1013683",
+    "image": ["https://example.com/fixtures/vivino/catena-malbec-2021.jpg"],
+    "offers": {
+      "@type": "Offer",
+      "price": "16.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "Bottle Size", "value": "750ML" },
+      { "@type": "PropertyValue", "name": "Vintage", "value": "2021" },
+      { "@type": "PropertyValue", "name": "Varietal", "value": "Malbec" },
+      { "@type": "PropertyValue", "name": "Region", "value": "Mendoza, Argentina" },
+      { "@type": "PropertyValue", "name": "ABV", "value": "13.5%" },
+      { "@type": "PropertyValue", "name": "Appearance", "value": "Deep violet with a ruby rim." },
+      { "@type": "PropertyValue", "name": "Aroma", "value": "Blackberry, plum, and a hint of violet." },
+      { "@type": "PropertyValue", "name": "Taste", "value": "Full-bodied with soft tannins and a long, fruity finish." },
+      { "@type": "PropertyValue", "name": "Food Pairing", "value": "Grilled red meats, empanadas, and hard cheeses." },
+      { "@type": "PropertyValue", "name": "Winemaker Notes", "value": "Sourced from high-altitude vineyards for concentration and freshness." },
+      { "@type": "PropertyValue", "name": "Highlights", "value": "High-altitude Mendoza fruit; consistent vintage-to-vintage style." }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Catena Malbec 2021</h1>
+</body>
+</html>

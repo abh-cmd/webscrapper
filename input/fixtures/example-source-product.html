@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example Cabernet Sauvignon</title>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Example Cabernet Sauvignon",
+        "brand": {
+          "@type": "Brand",
+          "name": "Example Winery"
+        },
+        "category": "Red Wine",
+        "image": [
+          "http://127.0.0.1:3000/input/fixtures/sample-wine-bottle.png"
+        ],
+        "offers": {
+          "price": "39.99",
+          "priceCurrency": "USD",
+          "availability": "InStock"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <main class="product-page">
+      <h1 data-test="product-name">Example Cabernet Sauvignon</h1>
+      <div class="brand" data-test="brand">Example Winery</div>
+      <div class="category" data-test="category">Red Wine</div>
+      <div class="size" data-test="size">750ml</div>
+      <div class="vintage" data-test="vintage">2021</div>
+      <div class="price" data-test="price">$39.99</div>
+      <div class="availability" data-test="availability">In stock</div>
+      <p class="description" data-test="description">Black cherry, cedar, and tobacco notes with a smooth finish.</p>
+      <div class="food-pairing" data-test="food-pairing">Grilled steak, lamb, and aged cheese.</div>
+      <div class="varietal" data-test="varietal">Cabernet Sauvignon</div>
+      <div class="region" data-test="region">Napa Valley</div>
+      <div class="abv" data-test="abv">14.5%</div>
+      <div class="rating" data-test="professional-ratings">92 points</div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture. The real request to this exact product URL, pulled
+  from totalwine.com's own public sitemap.xml, was blocked by a PerimeterX
+  CAPTCHA challenge before any real page content was served — see
+  total-wine-blocked.html, the actual captured response. This fixture is
+  therefore NOT real captured totalwine.com markup; it models the generic
+  schema.org Product conventions the adapter is written against (JSON-LD
+  Product + additionalProperty), using the real product identity (Torres
+  Vina Esmeralda, https://www.totalwine.com/wine/white-wine/white-blend/torres-vina-esmeralda/p/13784750)
+  discovered from the sitemap, so it exercises the adapter meaningfully.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Torres Vina Esmeralda | Total Wine (fixture)</title>
+  <meta property="og:title" content="Torres Vina Esmeralda">
+  <meta property="og:description" content="An aromatic white blend from Catalonia, Spain.">
+  <meta property="og:image" content="https://example.com/fixtures/total-wine/torres-vina-esmeralda.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Torres Vina Esmeralda",
+    "description": "A fragrant, floral white blend of Moscatel and Gewurztraminer from Penedes, Catalonia.",
+    "brand": { "@type": "Brand", "name": "Torres" },
+    "manufacturer": { "@type": "Organization", "name": "Familia Torres" },
+    "category": "White Wine",
+    "sku": "13784750",
+    "gtin13": "8410113005557",
+    "image": ["https://example.com/fixtures/total-wine/torres-vina-esmeralda.jpg"],
+    "offers": {
+      "@type": "Offer",
+      "price": "11.99",
+      "priceCurrency": "USD",
+      "availability": "https://schema.org/InStock"
+    },
+    "additionalProperty": [
+      { "@type": "PropertyValue", "name": "Bottle Size", "value": "750ML" },
+      { "@type": "PropertyValue", "name": "Vintage", "value": "2023" },
+      { "@type": "PropertyValue", "name": "Varietal", "value": "Moscatel / Gewurztraminer Blend" },
+      { "@type": "PropertyValue", "name": "Region", "value": "Penedes, Catalonia, Spain" },
+      { "@type": "PropertyValue", "name": "ABV", "value": "11.5%" },
+      { "@type": "PropertyValue", "name": "Appearance", "value": "Pale straw yellow." },
+      { "@type": "PropertyValue", "name": "Aroma", "value": "Floral notes of muscat grape and lychee." },
+      { "@type": "PropertyValue", "name": "Taste", "value": "Off-dry with crisp acidity and a fragrant finish." },
+      { "@type": "PropertyValue", "name": "Food Pairing", "value": "Spicy Asian cuisine, Thai food, and appetizers." },
+      { "@type": "PropertyValue", "name": "Winemaker Notes", "value": "Blended for aromatic intensity and easy drinkability." },
+      { "@type": "PropertyValue", "name": "Highlights", "value": "Widely available, consistent aromatic white blend." }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Torres Vina Esmeralda</h1>
+</body>
+</html>

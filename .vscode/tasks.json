@@ -1,0 +1,220 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "WineOutlet Frontend Dev Server",
+			"type": "shell",
+			"command": "npm",
+			"args": [
+				"--prefix",
+				"frontend",
+				"run",
+				"dev",
+				"--",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet Frontend Vite Server",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"frontend/node_modules/vite/bin/vite.js",
+				"--host",
+				"127.0.0.1"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet Frontend Vite Server Correct Root",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"frontend/node_modules/vite/bin/vite.js",
+				"frontend",
+				"--host",
+				"127.0.0.1",
+				"--port",
+				"5174"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet API Server",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"src/api/server.js"
+			],
+			"isBackground": true,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet Production Build",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"frontend/node_modules/vite/bin/vite.js",
+				"build",
+				"frontend",
+				"--config",
+				"frontend/vite.config.ts"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet TypeScript Check",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"frontend/node_modules/typescript/bin/tsc",
+				"-b",
+				"frontend/tsconfig.json"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "WineOutlet Config Check",
+			"type": "shell",
+			"command": "node",
+			"args": [
+				"src/config/check-config-cli.js"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Inspect Git Repository",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--branch"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Inspect GitHub Remote",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"ls-remote",
+				"https://github.com/abh-cmd/webscrapper.git",
+				"HEAD"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Initialize and Stage Repository",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"init",
+				"-b",
+				"main"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Stage Project Files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"--all"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Review Staged Files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Clean Generated Files",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"reset",
+				".claude/scheduled_tasks.lock",
+				"scripts/fixture-server.log",
+				"scripts/fixture-server.log.err"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Inspect Generated Artifacts",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"status",
+				"--short",
+				"--",
+				"output",
+				"scripts"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Remove Generated Files From Commit",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"rm",
+				"-r",
+				"--cached",
+				"--ignore-unmatch",
+				"output/images"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		},
+		{
+			"label": "Stage Clean Project",
+			"type": "shell",
+			"command": "git",
+			"args": [
+				"add",
+				"--all"
+			],
+			"isBackground": false,
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}

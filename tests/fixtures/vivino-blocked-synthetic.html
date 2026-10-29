@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture. Unlike wine-com-blocked.html and total-wine-blocked.html
+  (both real captured anti-bot challenge pages), this is NOT a real captured
+  Vivino response: no request was ever made to vivino.com beyond robots.txt,
+  which explicitly disallows ClaudeBot from every path. This fixture exists
+  only to exercise the adapter's generic HTTP-403/access-denied-wording
+  classification logic deterministically; it does not represent Vivino's
+  actual block page (which remains unobserved).
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Access Denied</title>
+</head>
+<body>
+  <p>Access to this page has been denied. Please complete the CAPTCHA to continue.</p>
+</body>
+</html>

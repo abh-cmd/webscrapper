@@ -1,0 +1,50 @@
+services:
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: wine_outlet
+      POSTGRES_USER: wineoutlet
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-wineoutlet}
+    volumes:
+      - wineoutlet-db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U wineoutlet -d wine_outlet"]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      PORT: 3100
+      DATABASE_URL: postgresql://wineoutlet:${POSTGRES_PASSWORD:-wineoutlet}@db:5432/wine_outlet
+      AI_PROVIDER: ${AI_PROVIDER:-deterministic-test}
+      PLAYWRIGHT_HEADLESS: ${PLAYWRIGHT_HEADLESS:-true}
+      IMAGE_STORAGE_ROOT: ${IMAGE_STORAGE_ROOT:-/app/output/images}
+    ports:
+      - "${PORT:-3100}:3100"
+    volumes:
+      - wineoutlet-images:/app/output/images
+      - wineoutlet-results:/app/output/results
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - "fetch('http://127.0.0.1:3100/api/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"
+      interval: 10s
+      timeout: 5s
+      retries: 6
+      start_period: 15s
+
+volumes:
+  wineoutlet-db:
+  wineoutlet-images:
+  wineoutlet-results:

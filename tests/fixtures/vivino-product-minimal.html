@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture: a minimal schema.org Product with only a name and an
+  offer, no additionalProperty entries, no brand/manufacturer/category, no
+  images. Used to prove that fields genuinely absent from the source
+  normalize to null / [] rather than being invented.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Minimal Test Wine | Vivino (fixture)</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Minimal Test Wine",
+    "offers": {
+      "@type": "Offer",
+      "price": "8.99",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <h1>Minimal Test Wine</h1>
+</body>
+</html>

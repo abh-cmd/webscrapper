@@ -1,0 +1,10 @@
+node_modules/
+.env
+NUL
+.DS_Store
+coverage/
+output/images/
+scripts/*.log
+output/results/*.json
+output/reports/*.json
+output/raw/*.html

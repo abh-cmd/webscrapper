@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture: same product as vivino-product.html, but with a
+  schema.org aggregateRating and review block added — representing the kind
+  of community/user rating data Vivino is actually known for. Used to prove
+  the adapter never maps this into professional_ratings.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Catena Malbec 2021 | Vivino (fixture)</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": "Catena Malbec 2021",
+    "description": "A deep, structured Malbec from high-altitude vineyards in Mendoza, Argentina.",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.2",
+      "reviewCount": "18342",
+      "bestRating": "5"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "wineuser123" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "4" },
+        "reviewBody": "Really enjoyed this with steak, great value."
+      }
+    ],
+    "offers": {
+      "@type": "Offer",
+      "price": "16.99",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+</head>
+<body>
+  <h1>Catena Malbec 2021</h1>
+</body>
+</html>

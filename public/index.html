@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>WineOutlet Crawler — Admin</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="shell">
+    <nav class="sidebar">
+      <div class="brand">🍷 WineOutlet</div>
+      <button class="navitem active" data-view="dashboard">Dashboard</button>
+      <button class="navitem" data-view="products">Products</button>
+      <button class="navitem" data-view="crawls">Crawls</button>
+      <button class="navitem" data-view="queue">Queue</button>
+      <button class="navitem" data-view="ai">AI Review</button>
+      <button class="navitem" data-view="sources">Sources</button>
+      <button class="navitem" data-view="images">Images</button>
+      <button class="navitem" data-view="admin">Database / Admin</button>
+      <div class="sidebar-footer" id="dbStatus">checking…</div>
+    </nav>
+    <main class="content" id="content">
+      <div class="loading">Loading…</div>
+    </main>
+  </div>
+  <script src="/app.js"></script>
+</body>
+</html>

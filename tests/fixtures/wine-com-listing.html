@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<!--
+  SYNTHETIC fixture modeling a schema.org ItemList/listing page, so the
+  adapter can be tested against a page that must NOT be extracted as a
+  single product.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Rose Wine | Wine.com (fixture)</title>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "url": "https://www.wine.com/product/example-one/111111" },
+      { "@type": "ListItem", "position": 2, "url": "https://www.wine.com/product/example-two/222222" }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <h1>Rose Wine</h1>
+  <ul>
+    <li><a href="/product/example-one/111111">Example Rose One</a></li>
+    <li><a href="/product/example-two/222222">Example Rose Two</a></li>
+  </ul>
+</body>
+</html>
